@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
-
     }
 
     void OnMove(InputValue value)
@@ -42,8 +41,14 @@ public class PlayerController : MonoBehaviour
         } else if (moveInput.x > 0) {
             spriteRenderer.flipX = false;
         }
+    }
 
-        
 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Item") {
+            PlayerInventory.add(other.gameObject.name);
+            Destroy(other.gameObject);
+        }
     }
 }
