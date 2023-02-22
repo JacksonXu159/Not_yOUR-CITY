@@ -1,24 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+ 
 public class PlayerBullet : MonoBehaviour
 {
-    GameObject target;
-    public float speed;
-    Rigidbody2D bulletRB;
-    // Start is called before the first frame update
-    void Start()
+    public float life = 3;
+ 
+    void Awake()
     {
+        Destroy(gameObject, life);
     }
-
-    void update(){
-
-        if (Input.GetMouseButtonDown(0))
-            bulletRB = GetComponent<Rigidbody2D>();
-            Vector2 moveDir = (Input.mousePosition - transform.position).normalized * speed;
-            bulletRB.velocity = new Vector2(moveDir.x, moveDir.y);
-            Destroy(this.gameObject, 2);
-
+ 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(collision.gameObject);
+        Destroy(gameObject);
     }
 }
