@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
+    public Inventory inventory;
+    public TextMeshProUGUI inventoryUI;
 
     private void Start()
     {
@@ -22,6 +25,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        inventory = new Inventory();
+        if (inventoryUI == null) Debug.LogWarning("No UI specified for player's inventory");
     }
 
     void FixedUpdate()
@@ -52,7 +57,7 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Item") {
-            PlayerInventory.add(other.gameObject.name);
+            inventory.add(other.gameObject.name);
             Destroy(other.gameObject);
         }
     }
@@ -63,6 +68,14 @@ public class PlayerController : MonoBehaviour
         {
             TakeDamage(20);
         }
+        
+        inventoryUI.text = "Items : ";
+        if (inventory.knife)
+            inventoryUI.text += "knife ";
+        if (inventory.gun)
+            inventoryUI.text += "gun ";
+        if (inventory.ammo > 0)
+            inventoryUI.text += inventory.ammo.ToString() + " ammo";
     }
 
     void TakeDamage(int damage)
