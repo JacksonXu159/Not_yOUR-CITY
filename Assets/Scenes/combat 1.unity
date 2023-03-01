@@ -454,6 +454,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 1134397757}
+  inventoryUI: {fileID: 0}
 --- !u!95 &727909821 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4771440884510652248, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
@@ -743,7 +744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -325, y: 308}
+  m_AnchoredPosition: {x: -345, y: 267}
   m_SizeDelta: {x: 52, y: 9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1134397757
