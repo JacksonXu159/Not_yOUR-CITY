@@ -22,6 +22,7 @@ public class EnemyFollowPlayer : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         m_Animator = gameObject.GetComponent<Animator>();
+        m_Animator.SetBool("walking", false);
     }
 
     // Update is called once per frame
@@ -38,6 +39,11 @@ public class EnemyFollowPlayer : MonoBehaviour
             Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
             nextFireTime = Time.time + fireRate;
             m_Animator.SetBool("walking", false);
+        }
+
+        else if (distanceFromPlayer > lineOfSight){
+            m_Animator.SetBool("walking", false);
+
         }
         Flip();
     }

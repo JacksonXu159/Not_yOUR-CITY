@@ -29,13 +29,16 @@ public class WeaponRotation : MonoBehaviour
 
         Vector2 scale = transform.localScale;
 
+
         if(Mathf.Abs(rotation_z) > 90)
         {
             scale.y = -yScale;
+            characterRenderer.flipX = true;
             transform.position = new Vector3(plr.position.x - xOffset, plr.position.y+yOffset, plr.position.z);
         }else if(Mathf.Abs(rotation_z) < 90)
         {
             scale.y = yScale;
+            characterRenderer.flipX = false;
             transform.position = new Vector3(plr.position.x + xOffset, plr.position.y+yOffset, plr.position.z);
 
         }
