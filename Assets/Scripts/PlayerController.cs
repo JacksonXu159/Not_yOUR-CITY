@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             TakeDamage(20);
         }
+
         
         inventoryUI.text = "Items : ";
         if (inventory.knife)
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
             inventoryUI.text += inventory.ammo.ToString() + " ammo";
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);

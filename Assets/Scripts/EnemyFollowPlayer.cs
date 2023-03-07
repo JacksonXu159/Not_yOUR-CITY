@@ -30,9 +30,9 @@ public class EnemyFollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        // if (health<=0){
-        //     Destroy(gameObject);
-        // }
+        if (health<=0){
+            Destroy(gameObject);
+        }
 
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
         if(distanceFromPlayer<lineOfSight && distanceFromPlayer > shootingRange)
