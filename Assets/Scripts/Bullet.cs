@@ -78,9 +78,14 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, life);
     }
  
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
-        Destroy(gameObject);
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerController>().currentHealth -= 5;
+            Debug.Log("the problem");
+            Destroy(gameObject);
+        }
+        
     }
 }

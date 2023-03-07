@@ -11,9 +11,14 @@ public class PlayerBullet : MonoBehaviour
         Destroy(gameObject, life);
     }
  
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
-        Destroy(gameObject);
+
+        if (collision.gameObject.tag == "baldEnemy")
+        {
+            collision.gameObject.GetComponent<EnemyFollowPlayer>().health -= 10;
+            Destroy(gameObject);
+        }
+
     }
 }

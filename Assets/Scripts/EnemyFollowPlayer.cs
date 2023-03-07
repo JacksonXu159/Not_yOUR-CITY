@@ -15,6 +15,7 @@ public class EnemyFollowPlayer : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public float bulletSpeed = 10;
     Animator m_Animator;
+    public float health = 20;
 
 
     // Start is called before the first frame update
@@ -29,6 +30,10 @@ public class EnemyFollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        // if (health<=0){
+        //     Destroy(gameObject);
+        // }
+
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
         if(distanceFromPlayer<lineOfSight && distanceFromPlayer > shootingRange)
         {
@@ -39,7 +44,9 @@ public class EnemyFollowPlayer : MonoBehaviour
         {
             // Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.right * bulletSpeed;
+            Vector2 moveDir = (player.transform.position - bulletSpawnPoint.position).normalized * bulletSpeed;
+//         bulletRB.velocity = new Vector2(moveDir.x, moveDir.y);
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(moveDir.x, moveDir.y); //bulletSpawnPoint.right * bulletSpeed;
 
             nextFireTime = Time.time + fireRate;
             m_Animator.SetBool("walking", false);
