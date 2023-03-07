@@ -9,10 +9,11 @@ public class EnemyFollowPlayer : MonoBehaviour
     public float shootingRange;
     public float fireRate = 1f;
     private float nextFireTime;
-    public GameObject bullet;
-    public GameObject bulletParent;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawnPoint;
     private Transform player;
     public SpriteRenderer spriteRenderer;
+    public float bulletSpeed = 10;
     Animator m_Animator;
 
 
@@ -36,7 +37,10 @@ public class EnemyFollowPlayer : MonoBehaviour
         }
         else if (distanceFromPlayer <= shootingRange && nextFireTime < Time.time)
         {
-            Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
+            // Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
+            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.right * bulletSpeed;
+
             nextFireTime = Time.time + fireRate;
             m_Animator.SetBool("walking", false);
         }
