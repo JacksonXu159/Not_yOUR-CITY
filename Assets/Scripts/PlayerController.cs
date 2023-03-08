@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
@@ -16,7 +17,18 @@ public class PlayerController : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
     public Inventory inventory;
-    public TextMeshProUGUI inventoryUI;
+    public Transform inventoryUIKnife;
+    public Transform inventoryUIGun;
+
+    public Sprite hasNoneSprite;
+    public Sprite hasPartialSprite;
+    public Sprite hasFullSprite;
+
+    public enum CurrentItem {
+        NONE,
+        GUN,
+        KNIFE
+    }
 
     private void Start()
     {
@@ -26,7 +38,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         inventory = new Inventory();
-        if (inventoryUI == null) Debug.LogWarning("No UI specified for player's inventory");
+        if (inventoryUIGun == null) Debug.LogWarning("No UI specified for player's inventory");
     }
 
     void FixedUpdate()
@@ -57,7 +69,12 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Item") {
-            inventory.add(other.gameObject.name);
+            if (other.gameObject.name == "knife")
+                inventory.PickupKnife();
+            if (other.gameObject.name == "gun")
+                inventory.PickupGun();
+            if (other.gameObject.name == "ammo")
+                inventory.PickupAmmo(30);
             Destroy(other.gameObject);
         }
     }
@@ -70,13 +87,43 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        inventoryUI.text = "Items : ";
+        TextMeshProUGUI knifeTextUI = inventoryUIKnife.GetComponentsInChildren<TextMeshProUGUI>()[0];
+        Image knifeTextImg = inventoryUIKnife.GetComponentsInChildren<Image>()[0];
         if (inventory.knife)
-            inventoryUI.text += "knife ";
+        {
+            knifeTextUI.text = "Has knife!";
+            knifeTextImg.sprite = hasFullSprite;
+        }
+        else 
+        {
+            knifeTextUI.text = "Has no knife...";
+            knifeTextImg.sprite = hasNoneSprite;
+        }
+
+        TextMeshProUGUI gunTextUI = inventoryUIGun.GetComponentsInChildren<TextMeshProUGUI>()[0];
+        Image gunTextImg = inventoryUIGun.GetComponentsInChildren<Image>()[0];
         if (inventory.gun)
-            inventoryUI.text += "gun ";
+        {
+            gunTextUI.text = "Has gun! ";
+            gunTextImg.sprite = hasPartialSprite;
+        }
+        else
+        {
+            gunTextImg.sprite = hasNoneSprite;
+        }
         if (inventory.ammo > 0)
-            inventoryUI.text += inventory.ammo.ToString() + " ammo";
+        {
+            if (inventory.gun)
+            {
+                gunTextUI.text += inventory.ammo.ToString() + " ammo";
+                gunTextImg.sprite = hasFullSprite;
+            }
+            else
+            {
+                gunTextUI.text = inventory.ammo.ToString() + " ammo";
+            }
+        }
+
     }
 
     public void TakeDamage(int damage)
@@ -84,6 +131,4 @@ public class PlayerController : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
-
-
 }

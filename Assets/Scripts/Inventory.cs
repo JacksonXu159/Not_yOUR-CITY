@@ -19,12 +19,13 @@ public class Inventory
         this.ammo = 0;
     }
 
-    public void add(string str) {
-        if (str == "knife") 
-            this.knife = true;
-        if (str == "gun")
-            this.gun = true;
-        if (str == "arrow")
-            this.ammo += 10;
+    public void PickupKnife() {
+        this.knife = true;
+    }
+    public void PickupGun() {
+        this.gun = true;
+    }
+    public void PickupAmmo(int amt) {
+        this.ammo += amt;
     }
 }
