@@ -19,13 +19,43 @@ public class Inventory
         this.ammo = 0;
     }
 
-    public void PickupKnife() {
+    public void PickupKnife()
+    {
         this.knife = true;
     }
-    public void PickupGun() {
+    public void PickupGun()
+    {
         this.gun = true;
     }
-    public void PickupAmmo(int amt) {
+    public void PickupAmmo(int amt)
+    {
         this.ammo += amt;
+    }
+
+    public bool CanStab()
+    {
+        return this.knife;
+    }
+
+    public bool CanShoot()
+    {
+        return (this.gun && this.ammo > 0);
+    }
+
+    public void Shoot(int amt)
+    {
+        if (CanShoot())
+        {
+            this.ammo -= amt;
+        }
+        else
+        {
+            Debug.LogError("Error occurred attempting to shoot.");
+        }
+    }
+
+    public void Shoot()
+    {
+        Shoot(1);
     }
 }
