@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void CheckHealth()
     {
-        if (health < 75) // check if the current health is below 75
+        if (health > 75) // check if the current health is below 75
         {
             StartCoroutine(spawnEnemy(missleInterval, misslePrefab)); // start the coroutine
         }
