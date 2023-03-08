@@ -8,6 +8,7 @@ TagManager:
   - baldEnemy
   - ratEnemy
   - Guiliani
+  - bullet
   layers:
   - Default
   - TransparentFX
