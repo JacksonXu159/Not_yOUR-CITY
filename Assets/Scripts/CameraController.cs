@@ -16,5 +16,21 @@ public class CameraController : MonoBehaviour
         Vector3 targetPosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
 
+        if (transform.position.y > 7.76f){
+            transform.position = new Vector3(transform.position.x, 7.75f, transform.position.z);
+        }
+        
+        if (transform.position.y < -11.97){
+            transform.position = new Vector3(transform.position.x, -11.96f, transform.position.z);
+        }
+        
+        if (transform.position.x > 10.79f){
+            transform.position = new Vector3(10.78f, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.x < -17.90f){
+            transform.position = new Vector3(-17.89f, transform.position.y, transform.position.z);
+        }
+
     }
 }
