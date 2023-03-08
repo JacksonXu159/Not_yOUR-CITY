@@ -8,10 +8,15 @@ public class Gun : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed = 10;
     public float nextFireTime;
- 
+    public GameObject player;
+    float ammo;
+
+
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && nextFireTime < Time.time)
+        ammo = player.GetComponent<PlayerController>().inventory.ammo;
+
+        if((Input.GetMouseButtonDown(0) && nextFireTime < Time.time))
         {
             nextFireTime = Time.time + 1f;
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);

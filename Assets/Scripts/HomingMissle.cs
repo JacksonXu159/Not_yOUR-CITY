@@ -32,13 +32,20 @@ public class HomingMissle : MonoBehaviour
         rb.velocity = transform.up * speed;
     }
 
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (target.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             Instantiate(explosionEffect, transform.position, transform.rotation);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(15);
             Destroy(gameObject);
-            
+        }
+
+        if (collision.gameObject.tag == "bullet")
+        {
+            Debug.Log("yes");
+            Instantiate(explosionEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
 
     }

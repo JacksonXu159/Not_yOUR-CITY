@@ -26,9 +26,16 @@ public class BossController : MonoBehaviour
         StartCoroutine(spawnEnemy(interval, enemy));
     }
 
+    void Update(){
+        if(health <=0){
+            Debug.Log("dead");
+            Destroy(gameObject);
+        }
+    }
+
     private void CheckHealth()
     {
-        if (health > 75) // check if the current health is below 75
+        if (health > 65) // check if the current health is below 75
         {
             StartCoroutine(spawnEnemy(missleInterval, misslePrefab)); // start the coroutine
         }

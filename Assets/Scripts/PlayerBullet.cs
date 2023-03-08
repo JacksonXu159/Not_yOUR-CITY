@@ -17,7 +17,13 @@ public class PlayerBullet : MonoBehaviour
         if (collision.gameObject.tag == "baldEnemy")
         {
             collision.gameObject.GetComponent<EnemyFollowPlayer>().health -= 10;
-            // collision.gameObject.GetComponent<EnemySpawner>().health -=10;
+            Destroy(gameObject);
+        }
+
+
+        if (collision.gameObject.tag == "Guiliani")
+        {
+            collision.gameObject.GetComponent<BossController>().health -= 2;
             Destroy(gameObject);
         }
     }
