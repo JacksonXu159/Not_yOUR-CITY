@@ -488,6 +488,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274607438}
   m_CullTransparentMesh: 1
+--- !u!1 &360618542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4146053282838055667, guid: a0439a658826a4e12a388d83253bc99b, type: 3}
+  m_PrefabInstance: {fileID: 4146053282387279087}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &360618547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360618542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75c4422c7925b4cf8b9bc65bae58e95c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterRenderer: {fileID: 0}
+  weaponRenderer: {fileID: 0}
+  yOffset: 0
+  plr: {fileID: 0}
 --- !u!1 &368239783
 GameObject:
   m_ObjectHideFlags: 0
@@ -4731,10 +4752,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 727909829}
   weaponRenderer: {fileID: 1437522124}
-  offset: 0
-  xOffset: 0
   yOffset: 0
-  plr: {fileID: 727909830}
+  plr: {fileID: 0}
 --- !u!1 &1459032192
 GameObject:
   m_ObjectHideFlags: 0
@@ -29483,6 +29502,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4390373325657475692, guid: dd3626d68b6d4477fbdcd29771eea8b0, type: 3}
       propertyPath: plr
+      value: 
+      objectReference: {fileID: 727909830}
+    - target: {fileID: 4390373325657475692, guid: dd3626d68b6d4477fbdcd29771eea8b0, type: 3}
+      propertyPath: player
       value: 
       objectReference: {fileID: 727909830}
     - target: {fileID: 4390373325657475692, guid: dd3626d68b6d4477fbdcd29771eea8b0, type: 3}
