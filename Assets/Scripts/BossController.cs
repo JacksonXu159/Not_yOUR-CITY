@@ -11,6 +11,10 @@ public class BossController : MonoBehaviour
 
     [SerializeField]
     private float missleInterval = 1f;
+
+    [SerializeField]
+    private GameObject eyePrefab;
+
     public float health = 100f; // maximum health of the object// current health of the object
     
     // Start is called before the first frame update
@@ -22,8 +26,15 @@ public class BossController : MonoBehaviour
     private IEnumerator spawnEnemy(float interval, GameObject enemy)
     {
         yield return new WaitForSeconds(interval);
-        GameObject newEnemy = Instantiate(enemy, transform.position + new Vector3(-2,1), Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemy, transform.position + new Vector3(-2f,0), Quaternion.identity);
         StartCoroutine(spawnEnemy(interval, enemy));
+    }
+
+    private IEnumerator spawnEyes(GameObject enemy)
+    {
+        GameObject leftEye = Instantiate(enemy, transform.position + new Vector3(0.183f, 0.35f), Quaternion.identity);
+        GameObject rightEye = Instantiate(enemy, transform.position + new Vector3(-1.117f,0.35f), Quaternion.identity);
+        yield return null;
     }
 
     void Update(){
@@ -37,7 +48,8 @@ public class BossController : MonoBehaviour
     {
         if (health > 65) // check if the current health is below 75
         {
-            StartCoroutine(spawnEnemy(missleInterval, misslePrefab)); // start the coroutine
+            //StartCoroutine(spawnEnemy(missleInterval, misslePrefab)); // start the coroutine
+            StartCoroutine(spawnEyes(eyePrefab));
         }
     }   
 

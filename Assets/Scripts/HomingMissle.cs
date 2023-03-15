@@ -8,7 +8,7 @@ public class HomingMissle : MonoBehaviour
     // Start is called before the first frame update
 
     public Transform target;
-    public float speed = 5f;
+    public float speed = 100000f;
     public float rotateSpeed = 200f;
     private Rigidbody2D rb;
     public GameObject explosionEffect;
