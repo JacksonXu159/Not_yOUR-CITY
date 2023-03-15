@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public Sprite hasPartialSprite;
     public Sprite hasFullSprite;
 
+    int gunIndex = 0;
+
     public enum CurrentItem {
         NONE,
         GUN,
@@ -71,7 +73,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Item") {
             if (other.gameObject.name == "knife")
                 inventory.PickupKnife();
-            if (other.gameObject.name == "gun")
+            if (other.gameObject.name == "gunDrop")
                 inventory.PickupGun();
             if (other.gameObject.name == "ammo")
                 inventory.PickupAmmo(30);
@@ -81,9 +83,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             TakeDamage(20f);
+        }
+
+        if (inventory.hasGun()){
+            if (Input.GetKeyDown(KeyCode.Alpha1)){
+                if (gunIndex == 0){
+                    gameObject.transform.Find("Gun").gameObject.SetActive(true);
+                    gunIndex = 1;
+                }else if(gunIndex ==1){
+                    gameObject.transform.Find("Gun").gameObject.SetActive(false);  
+                    gunIndex = 0;                  
+                }
+            }
         }
 
         

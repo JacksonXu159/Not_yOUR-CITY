@@ -41,6 +41,10 @@ public class Inventory
     {
         return (this.gun && this.ammo > 0);
     }
+    public bool hasGun()
+    {
+        return (gun);
+    }
 
     public void Shoot(int amt)
     {
