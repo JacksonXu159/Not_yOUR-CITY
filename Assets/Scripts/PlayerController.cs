@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private Rigidbody2D rb;
     public Animator animator;
-    public SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     public float maxHealth = 100;
     public float currentHealth;
 
