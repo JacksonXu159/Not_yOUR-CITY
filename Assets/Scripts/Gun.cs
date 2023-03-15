@@ -14,10 +14,11 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        ammo = player.GetComponent<PlayerController>().inventory.ammo;
+        Debug.Log(player.GetComponent<PlayerController>().inventory.CanShoot());
 
-        if((Input.GetMouseButtonDown(0) && nextFireTime < Time.time))
+        if(((Input.GetMouseButtonDown(0) && nextFireTime < Time.time)) && player.GetComponent<PlayerController>().inventory.CanShoot())
         {
+            player.GetComponent<PlayerController>().inventory.Shoot(1);
             nextFireTime = Time.time + 1f;
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.right * bulletSpeed;

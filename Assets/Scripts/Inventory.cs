@@ -21,25 +21,25 @@ public class Inventory
 
     public void PickupKnife()
     {
-        this.knife = true;
+        knife = true;
     }
     public void PickupGun()
     {
-        this.gun = true;
+        gun = true;
     }
     public void PickupAmmo(int amt)
     {
-        this.ammo += amt;
+        ammo += amt;
     }
 
     public bool CanStab()
     {
-        return this.knife;
+        return knife;
     }
 
     public bool CanShoot()
     {
-        return (this.gun && this.ammo > 0);
+        return (gun && ammo > 0);
     }
     public bool hasGun()
     {
@@ -50,7 +50,7 @@ public class Inventory
     {
         if (CanShoot())
         {
-            this.ammo -= amt;
+            ammo -= amt;
         }
         else
         {
