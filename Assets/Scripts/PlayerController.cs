@@ -19,11 +19,7 @@ public class PlayerController : MonoBehaviour
     // Inventory UI
     public HealthBar healthBar;
     public Inventory inventory;
-    public Transform inventoryUIKnife;
-    public Transform inventoryUIGun;
-    public Sprite hasNoneSprite;
-    public Sprite hasPartialSprite;
-    public Sprite hasFullSprite;
+    public InventoryBar inventoryBar;
 
     // Inventory keybinds
     public KeyCode equipNothing; // Will this one day become "drop current item?"
@@ -47,7 +43,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         inventory = new Inventory();
-        if (inventoryUIGun == null) Debug.LogWarning("No UI specified for player's inventory");
+        
+        inventoryBar.Sync(inventory);
     }
 
     void FixedUpdate()
@@ -85,6 +82,7 @@ public class PlayerController : MonoBehaviour
             if (other.gameObject.name == "ammo")
                 inventory.PickupAmmo(30);
             Destroy(other.gameObject);
+            inventoryBar.Sync(inventory);
         }
     }
 
@@ -111,27 +109,7 @@ public class PlayerController : MonoBehaviour
         {
             inventory.Equip(Inventory.Equippable.GUN);
         }
-        
-        // Update inventory UI
-        // Update knife first
-        Image knifeTextImg = inventoryUIKnife.GetComponentsInChildren<Image>()[0];
-        knifeTextImg.sprite = inventory.hasKnife() ? hasFullSprite : hasNoneSprite;
-
-        // Then update gun
-        TextMeshProUGUI gunUIText = inventoryUIGun.GetComponentsInChildren<TextMeshProUGUI>()[0];
-        Image gunUIImageBkgd = inventoryUIGun.GetComponentsInChildren<Image>()[0];
-        gunUIText.text = inventory.ammo.ToString();
-        if (inventory.hasGun() && inventory.hasAmmo())
-        {
-            gunUIImageBkgd.sprite = hasFullSprite;
-        }
-        else if (!inventory.hasGun() && !inventory.hasAmmo())
-        {
-            gunUIImageBkgd.sprite = hasNoneSprite;
-        }
-        else {
-            gunUIImageBkgd.sprite = hasPartialSprite;
-        }
+    
     }
 
     public void TakeDamage(float damage)
