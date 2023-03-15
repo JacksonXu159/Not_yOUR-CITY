@@ -32,7 +32,7 @@ public class LaserHazard : MonoBehaviour
         {
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, hit.point);
-            hit.collider.GetComponent<PlayerController>().TakeDamage(1);
+            hit.collider.GetComponent<PlayerController>().TakeDamage(0.01f);
         }
 
         lineRenderer.SetPosition(0, transform.position);

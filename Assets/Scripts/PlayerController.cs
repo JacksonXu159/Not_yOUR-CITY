@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
     public HealthBar healthBar;
     public Inventory inventory;
     public Transform inventoryUIKnife;
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(20);
+            TakeDamage(20f);
         }
 
         
@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
