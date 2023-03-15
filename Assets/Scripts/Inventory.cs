@@ -10,6 +10,13 @@ public class Inventory
     public bool knife;
     public bool gun;
     public int ammo;
+    public Equippable currentlyEquipped;
+
+    public enum Equippable {
+        NONE,
+        KNIFE,
+        GUN,
+    }
 
     // Start is called before the first frame update
     public Inventory()
@@ -17,6 +24,30 @@ public class Inventory
         this.knife = false;
         this.gun = false;
         this.ammo = 0;
+        Equip(Equippable.NONE);
+    }
+
+    public void Equip(Equippable e)
+    {
+        switch (e) {
+            case Equippable.NONE:
+                currentlyEquipped = e;
+                break;
+            case Equippable.GUN:
+                if (hasGun()) currentlyEquipped = e;
+                break;
+            case Equippable.KNIFE:
+                if (hasKnife()) currentlyEquipped = e;
+                break;
+            default:
+                Debug.LogError("Unexpected equippable. What are you trying to equip?");
+                return;
+        }
+    }
+
+    public string getCurrentlyEquipped()
+    {
+        return currentlyEquipped.ToString();
     }
 
     public void PickupKnife()

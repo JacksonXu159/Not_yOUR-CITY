@@ -15,14 +15,21 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public float maxHealth = 100;
     public float currentHealth;
+
+    // Inventory UI
     public HealthBar healthBar;
     public Inventory inventory;
     public Transform inventoryUIKnife;
     public Transform inventoryUIGun;
-
     public Sprite hasNoneSprite;
     public Sprite hasPartialSprite;
     public Sprite hasFullSprite;
+
+    // Inventory keybinds
+    public KeyCode equipNothing; // Will this one day become "drop current item?"
+    public KeyCode equipKnife; // Will this one day become "drop current item?"
+    public KeyCode equipGun;
+    public TextMeshProUGUI ControlsUI;
 
     int gunIndex = 0;
 
@@ -83,23 +90,27 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Display keybinds/controls
+        ControlsUI.text = "Controls: \n";
+        ControlsUI.text += "None: "+ equipNothing + "\n";
+        ControlsUI.text += "Knife: "+ equipKnife + "\n";
+        ControlsUI.text += "Gun: "+ equipGun + "\n";
 
-        if(Input.GetKeyDown(KeyCode.Space))
+
+        // Keyevent handlers
+        // Inventory keybinds
+        if (Input.GetKeyDown(equipNothing))
         {
-            TakeDamage(20f);
+            inventory.Equip(Inventory.Equippable.NONE);
         }
-        if (inventory.hasGun()){
-            if (Input.GetKeyDown(KeyCode.Alpha1)){
-                if (gunIndex == 0){
-                    gameObject.transform.Find("Gun").gameObject.SetActive(true);
-                    gunIndex = 1;
-                }else if(gunIndex ==1){
-                    gameObject.transform.Find("Gun").gameObject.SetActive(false);  
-                    gunIndex = 0;                  
-                }
-            }
+        if (Input.GetKeyDown(equipKnife))
+        {
+            inventory.Equip(Inventory.Equippable.KNIFE);
         }
-
+        if (Input.GetKeyDown(equipGun))
+        {
+            inventory.Equip(Inventory.Equippable.GUN);
+        }
         
         // Update inventory UI
         // Update knife first
@@ -110,7 +121,6 @@ public class PlayerController : MonoBehaviour
         TextMeshProUGUI gunUIText = inventoryUIGun.GetComponentsInChildren<TextMeshProUGUI>()[0];
         Image gunUIImageBkgd = inventoryUIGun.GetComponentsInChildren<Image>()[0];
         gunUIText.text = inventory.ammo.ToString();
-        Debug.Log(inventory.hasGun() + " " + inventory.hasAmmo());
         if (inventory.hasGun() && inventory.hasAmmo())
         {
             gunUIImageBkgd.sprite = hasFullSprite;
@@ -122,6 +132,8 @@ public class PlayerController : MonoBehaviour
         else {
             gunUIImageBkgd.sprite = hasPartialSprite;
         }
+
+        Debug.Log("Currently equipped: " + inventory.getCurrentlyEquipped());
     }
 
     public void TakeDamage(float damage)
