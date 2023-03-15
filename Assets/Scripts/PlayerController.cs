@@ -132,8 +132,6 @@ public class PlayerController : MonoBehaviour
         else {
             gunUIImageBkgd.sprite = hasPartialSprite;
         }
-
-        Debug.Log("Currently equipped: " + inventory.getCurrentlyEquipped());
     }
 
     public void TakeDamage(float damage)
