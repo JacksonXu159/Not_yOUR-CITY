@@ -88,7 +88,6 @@ public class PlayerController : MonoBehaviour
         {
             TakeDamage(20f);
         }
-
         if (inventory.hasGun()){
             if (Input.GetKeyDown(KeyCode.Alpha1)){
                 if (gunIndex == 0){
@@ -102,43 +101,27 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        TextMeshProUGUI knifeTextUI = inventoryUIKnife.GetComponentsInChildren<TextMeshProUGUI>()[0];
+        // Update inventory UI
+        // Update knife first
         Image knifeTextImg = inventoryUIKnife.GetComponentsInChildren<Image>()[0];
-        if (inventory.knife)
-        {
-            knifeTextUI.text = "Has knife!";
-            knifeTextImg.sprite = hasFullSprite;
-        }
-        else 
-        {
-            knifeTextUI.text = "Has no knife...";
-            knifeTextImg.sprite = hasNoneSprite;
-        }
+        knifeTextImg.sprite = inventory.hasKnife() ? hasFullSprite : hasNoneSprite;
 
-        TextMeshProUGUI gunTextUI = inventoryUIGun.GetComponentsInChildren<TextMeshProUGUI>()[0];
-        Image gunTextImg = inventoryUIGun.GetComponentsInChildren<Image>()[0];
-        if (inventory.gun)
+        // Then update gun
+        TextMeshProUGUI gunUIText = inventoryUIGun.GetComponentsInChildren<TextMeshProUGUI>()[0];
+        Image gunUIImageBkgd = inventoryUIGun.GetComponentsInChildren<Image>()[0];
+        gunUIText.text = inventory.ammo.ToString();
+        Debug.Log(inventory.hasGun() + " " + inventory.hasAmmo());
+        if (inventory.hasGun() && inventory.hasAmmo())
         {
-            gunTextUI.text = "Has gun! ";
-            gunTextImg.sprite = hasPartialSprite;
+            gunUIImageBkgd.sprite = hasFullSprite;
         }
-        else
+        else if (!inventory.hasGun() && !inventory.hasAmmo())
         {
-            gunTextImg.sprite = hasNoneSprite;
+            gunUIImageBkgd.sprite = hasNoneSprite;
         }
-        if (inventory.ammo > 0)
-        {
-            if (inventory.gun)
-            {
-                gunTextUI.text += inventory.ammo.ToString() + " ammo";
-                gunTextImg.sprite = hasFullSprite;
-            }
-            else
-            {
-                gunTextUI.text = inventory.ammo.ToString() + " ammo";
-            }
+        else {
+            gunUIImageBkgd.sprite = hasPartialSprite;
         }
-
     }
 
     public void TakeDamage(float damage)

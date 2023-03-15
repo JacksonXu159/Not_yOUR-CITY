@@ -14,7 +14,7 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(player.GetComponent<PlayerController>().inventory.CanShoot());
+        // Debug.Log(player.GetComponent<PlayerController>().inventory.CanShoot());
 
         if(((Input.GetMouseButtonDown(0) && nextFireTime < Time.time)) && player.GetComponent<PlayerController>().inventory.CanShoot())
         {
