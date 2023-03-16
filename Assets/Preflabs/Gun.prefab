@@ -187,8 +187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 0}
   weaponRenderer: {fileID: 4390373325657475693}
-  offset: 0
-  xOffset: 0.5
   yOffset: -0.5
   plr: {fileID: 0}
 --- !u!114 &4390373325657475694
@@ -208,6 +206,7 @@ MonoBehaviour:
   bulletSpeed: 10
   nextFireTime: 0
   player: {fileID: 0}
+  shootClip: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
 --- !u!1 &4390373325930170543
 GameObject:
   m_ObjectHideFlags: 0
