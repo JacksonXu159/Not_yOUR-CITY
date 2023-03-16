@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
     float ammo;
     private AudioSource audioOutputSource;
     public AudioClip shootClip;
+    public AudioClip outOfAmmoClip;
 
     void Start()
     {
@@ -31,6 +32,10 @@ public class Gun : MonoBehaviour
                 var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.right * bulletSpeed;
                 audioOutputSource.PlayOneShot(shootClip);
+            }
+            else
+            {
+                audioOutputSource.PlayOneShot(outOfAmmoClip);
             }
         }
     }
