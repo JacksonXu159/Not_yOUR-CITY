@@ -5,7 +5,7 @@ public class LaserHazard : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private float rotationSpeed = 1f;
     [SerializeField] private LineRenderer lineRenderer;
-    
+
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -28,7 +28,7 @@ public class LaserHazard : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, Mathf.Infinity, layerMask);
 
-        if(hit.collider.CompareTag("Player"))
+        if (hit.collider.CompareTag("Player"))
         {
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, hit.point);

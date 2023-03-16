@@ -8,7 +8,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField]public float moveSpeed = 1f;
+    [SerializeField] public float moveSpeed = 1f;
     private Vector2 moveInput;
     private Rigidbody2D rb;
     public Animator animator;
@@ -34,7 +34,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip pickupAmmoClip;
 
 
-    public enum CurrentItem {
+    public enum CurrentItem
+    {
         NONE,
         GUN,
         KNIFE
@@ -63,17 +64,22 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = value.Get<Vector2>();
 
-        if(moveInput.x != 0 || moveInput.y != 0)
+        if (moveInput.x != 0 || moveInput.y != 0)
         {
             animator.SetBool("isMoving", true);
-        } else {
+        }
+        else
+        {
 
             animator.SetBool("isMoving", false);
         }
 
-        if(moveInput.x < 0) {
+        if (moveInput.x < 0)
+        {
             spriteRenderer.flipX = true;
-        } else if (moveInput.x > 0) {
+        }
+        else if (moveInput.x > 0)
+        {
             spriteRenderer.flipX = false;
         }
     }
@@ -81,7 +87,8 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Item") {
+        if (other.gameObject.tag == "Item")
+        {
             if (other.gameObject.name == "knife")
             {
                 inventory.PickupKnife();
@@ -105,9 +112,9 @@ public class PlayerController : MonoBehaviour
     {
         // Display keybinds/controls
         ControlsUI.text = "Controls: \n";
-        ControlsUI.text += "None: "+ equipNothing + "\n";
-        ControlsUI.text += "Knife: "+ equipKnife + "\n";
-        ControlsUI.text += "Gun: "+ equipGun + "\n";
+        ControlsUI.text += "None: " + equipNothing + "\n";
+        ControlsUI.text += "Knife: " + equipKnife + "\n";
+        ControlsUI.text += "Gun: " + equipGun + "\n";
 
 
         // Keyevent handlers
@@ -125,7 +132,7 @@ public class PlayerController : MonoBehaviour
             inventory.Equip(Inventory.Equippable.GUN);
         }
 
-        
+
         inventoryBar.Sync(inventory); // Expensive call but how else will a gun shooting update the inventory without iterating through a billion GameObjects?
     }
 

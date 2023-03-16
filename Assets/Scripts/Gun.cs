@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
+
 public class Gun : MonoBehaviour
 {
     public Transform bulletSpawnPoint;
@@ -23,7 +23,7 @@ public class Gun : MonoBehaviour
     {
         // Debug.Log(player.GetComponent<PlayerController>().inventory.CanShoot());
 
-        if(Input.GetMouseButtonDown(0) && nextFireTime < Time.time)
+        if (Input.GetMouseButtonDown(0) && nextFireTime < Time.time)
         {
             if (player.GetComponent<PlayerController>().inventory.CanShoot())
             {

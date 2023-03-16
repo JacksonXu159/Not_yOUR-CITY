@@ -29,7 +29,8 @@ public class InventoryBar : MonoBehaviour
         {
             gunBackgroundImage.sprite = hasNoneSprite;
         }
-        else {
+        else
+        {
             gunBackgroundImage.sprite = hasPartialSprite;
         }
 

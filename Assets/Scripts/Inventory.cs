@@ -12,7 +12,8 @@ public class Inventory
     public int ammo;
     public Equippable currentlyEquipped;
 
-    public enum Equippable {
+    public enum Equippable
+    {
         NONE,
         KNIFE,
         GUN,
@@ -29,7 +30,8 @@ public class Inventory
 
     public void Equip(Equippable e)
     {
-        switch (e) {
+        switch (e)
+        {
             case Equippable.NONE:
                 currentlyEquipped = e;
                 break;
@@ -73,7 +75,8 @@ public class Inventory
         return (gun && ammo > 0);
     }
 
-    public bool hasKnife() {
+    public bool hasKnife()
+    {
         return this.knife;
     }
 

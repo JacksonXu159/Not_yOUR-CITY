@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponRotation : MonoBehaviour
 {
-    public Vector2 PointerPosition {get; set;}
+    public Vector2 PointerPosition { get; set; }
     public SpriteRenderer characterRenderer;
     public SpriteRenderer weaponRenderer;
     private float yScale;
@@ -31,22 +31,22 @@ public class WeaponRotation : MonoBehaviour
 
         // Place weapon a certain distance from current player, based on mousePosition's difference
         transform.position = new Vector3(
-            plr.position.x  + this.armLength * difference.x,
+            plr.position.x + this.armLength * difference.x,
             plr.position.y + this.armLength * difference.y,
             plr.position.z + this.armLength * difference.z
         );
 
-        if(Mathf.Abs(rotation_z) > 90)
+        if (Mathf.Abs(rotation_z) > 90)
         {
             scale.y = -yScale;
             characterRenderer.flipX = true;
-            transform.position = new Vector3(transform.position.x, transform.position.y+yOffset, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
         }
-        else if(Mathf.Abs(rotation_z) < 90)
+        else if (Mathf.Abs(rotation_z) < 90)
         {
             scale.y = yScale;
             characterRenderer.flipX = false;
-            transform.position = new Vector3(transform.position.x, transform.position.y+yOffset, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
         }
         transform.localScale = scale;
     }
