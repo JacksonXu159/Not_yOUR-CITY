@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 159618570056019994}
   - component: {fileID: 159618570056019997}
   m_Layer: 0
-  m_Name: Missle
+  m_Name: Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,6 +124,8 @@ MonoBehaviour:
   speed: 5
   rotateSpeed: 300
   explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+  missileSpawnClip: {fileID: 8300000, guid: 795edbcad7a9b6b4ab1916272afbe949, type: 3}
+  missileExplodeClip: {fileID: 8300000, guid: f54a17a20b897484d83f941227bff460, type: 3}
 --- !u!60 &159618570056019997
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -65,6 +65,7 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(interval);
         Vector3 spawnPosition = spawnPositionList[Random.Range(0, spawnPositionList.Count)];
         GameObject enemySpawn = Instantiate(enemy, spawnPosition, Quaternion.identity);
+        
         StartCoroutine(spawnEnemy(interval, enemy));
     }
 

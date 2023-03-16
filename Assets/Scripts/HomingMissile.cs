@@ -15,12 +15,20 @@ public class HomingMissile : MonoBehaviour
     private float spawnTime;
     private float maxTime = 3f; // maximum time for the missile to follow the target
 
+    // Sounds
+    private AudioSource audioOutputSource;
+    public AudioClip missileSpawnClip;
+    public AudioClip missileExplodeClip;
+
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         spawnTime = Time.time; // save the spawn time of the missile
+        
+        audioOutputSource = gameObject.AddComponent<AudioSource>();
+        audioOutputSource.PlayOneShot(missileSpawnClip);
     }
 
     void FixedUpdate()
@@ -54,12 +62,14 @@ public class HomingMissile : MonoBehaviour
             Instantiate(explosionEffect, transform.position, transform.rotation);
             collision.gameObject.GetComponent<PlayerController>().TakeDamage(15);
             Destroy(gameObject);
+            audioOutputSource.PlayOneShot(missileExplodeClip);
         }
 
         if (collision.gameObject.tag == "bullet")
         {
             Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);
+            audioOutputSource.PlayOneShot(missileExplodeClip);
         }
 
         if (collision.gameObject.tag == "baldEnemy")
@@ -67,8 +77,7 @@ public class HomingMissile : MonoBehaviour
             Instantiate(explosionEffect, transform.position, transform.rotation);
             collision.gameObject.GetComponent<EnemyFollowPlayer>().health -= 15;
             Destroy(gameObject);
-
+            audioOutputSource.PlayOneShot(missileExplodeClip);
         }
     }
-
 }
