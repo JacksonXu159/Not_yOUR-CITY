@@ -206,7 +206,7 @@ MonoBehaviour:
   bulletSpeed: 10
   nextFireTime: 0
   player: {fileID: 0}
-  shootClip: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+  shootClip: {fileID: 8300000, guid: d434dec9cf88d3f428fa19ad25f2a73c, type: 3}
   outOfAmmoClip: {fileID: 8300000, guid: e7632c6401c09437e83de45d33c5858e, type: 3}
 --- !u!1 &4390373325930170543
 GameObject:
