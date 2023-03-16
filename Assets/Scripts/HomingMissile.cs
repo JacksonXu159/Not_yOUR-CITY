@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class HomingMissle : MonoBehaviour
+public class HomingMissile : MonoBehaviour
 {
 
     public Transform target;

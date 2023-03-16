@@ -8,10 +8,10 @@ public class BossController : MonoBehaviour
     public float health = 100f; // maximum health of the object// current health of the object
 
     [SerializeField]
-    private GameObject misslePrefab;
+    private GameObject MissilePrefab;
 
     [SerializeField]
-    private float missleInterval = 1f;
+    private float MissileInterval = 1f;
 
     [SerializeField]
     private GameObject eyePrefab;
@@ -46,11 +46,11 @@ public class BossController : MonoBehaviour
     }
 
 
-    private IEnumerator spawnMissle(float interval, GameObject enemy)
+    private IEnumerator spawnMissile(float interval, GameObject enemy)
     {
         yield return new WaitForSeconds(interval);
         GameObject newEnemy = Instantiate(enemy, transform.position + new Vector3(-2f, 0), Quaternion.identity);
-        StartCoroutine(spawnMissle(interval, enemy));
+        StartCoroutine(spawnMissile(interval, enemy));
     }
 
     private IEnumerator spawnEyes(GameObject enemy)
@@ -101,7 +101,7 @@ public class BossController : MonoBehaviour
 
         if (health <= 70f) // check if the current health is below 75
         {
-            StartCoroutine(spawnMissle(missleInterval, misslePrefab)); // start the coroutine
+            StartCoroutine(spawnMissile(MissileInterval, MissilePrefab)); // start the coroutine
         }
 
         if (health < 40f)
