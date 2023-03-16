@@ -82,7 +82,6 @@ public class PlayerController : MonoBehaviour
             if (other.gameObject.name == "ammo")
                 inventory.PickupAmmo(30);
             Destroy(other.gameObject);
-            inventoryBar.Sync(inventory);
         }
     }
 
@@ -109,7 +108,9 @@ public class PlayerController : MonoBehaviour
         {
             inventory.Equip(Inventory.Equippable.GUN);
         }
-    
+
+        
+        inventoryBar.Sync(inventory); // Expensive call but how else will a gun shooting update the inventory without iterating through a billion GameObjects?
     }
 
     public void TakeDamage(float damage)
