@@ -27,7 +27,12 @@ public class PlayerController : MonoBehaviour
     public KeyCode equipGun;
     public TextMeshProUGUI ControlsUI;
 
-    int gunIndex = 0;
+    // Sounds
+    private AudioSource audioOutputSource;
+    public AudioClip pickupKnifeClip;
+    public AudioClip pickupGunClip;
+    public AudioClip pickupAmmoClip;
+
 
     public enum CurrentItem {
         NONE,
@@ -37,14 +42,16 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        currentHealth = maxHealth;
         inventory = new Inventory();
-        
         inventoryBar.Sync(inventory);
+
+        audioOutputSource = gameObject.AddComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -76,11 +83,20 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Item") {
             if (other.gameObject.name == "knife")
+            {
                 inventory.PickupKnife();
+                audioOutputSource.PlayOneShot(pickupKnifeClip);
+            }
             if (other.gameObject.name == "gunDrop")
+            {
                 inventory.PickupGun();
+                audioOutputSource.PlayOneShot(pickupGunClip);
+            }
             if (other.gameObject.name == "ammo")
+            {
                 inventory.PickupAmmo(30);
+                audioOutputSource.PlayOneShot(pickupAmmoClip);
+            }
             Destroy(other.gameObject);
         }
     }
