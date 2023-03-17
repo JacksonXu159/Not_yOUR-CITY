@@ -11,6 +11,7 @@ public class Inventory
     public bool gun;
     public int ammo;
     public Equippable currentlyEquipped;
+    private GameObject player;
 
     public enum Equippable
     {
@@ -30,16 +31,20 @@ public class Inventory
 
     public void Equip(Equippable e)
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         switch (e)
         {
             case Equippable.NONE:
                 currentlyEquipped = e;
+                player.transform.Find("Gun").gameObject.SetActive(false);
                 break;
             case Equippable.GUN:
                 if (hasGun()) currentlyEquipped = e;
+                    player.transform.Find("Gun").gameObject.SetActive(true);
                 break;
             case Equippable.KNIFE:
                 if (hasKnife()) currentlyEquipped = e;
+                    player.transform.Find("Gun").gameObject.SetActive(false);
                 break;
             default:
                 Debug.LogError("Unexpected equippable. What are you trying to equip?");
