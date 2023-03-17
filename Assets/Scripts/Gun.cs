@@ -8,6 +8,7 @@ public class Gun : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed = 10;
     public float nextFireTime;
+    public float fireRate = 0.2f;
     public GameObject player;
     float ammo;
     private AudioSource audioOutputSource;
@@ -28,7 +29,7 @@ public class Gun : MonoBehaviour
             if (player.GetComponent<PlayerController>().inventory.CanShoot())
             {
                 player.GetComponent<PlayerController>().inventory.Shoot(1);
-                nextFireTime = Time.time + 1f;
+                nextFireTime = Time.time + fireRate;
                 var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.right * bulletSpeed;
                 audioOutputSource.PlayOneShot(shootClip);
