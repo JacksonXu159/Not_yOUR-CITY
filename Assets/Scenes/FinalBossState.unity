@@ -370,8 +370,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  misslePrefab: {fileID: 159618570056019996, guid: 4361bae5b68aa4f09b3f98b50a8c1c28, type: 3}
-  missleInterval: 3.5
+  MissilePrefab: {fileID: 159618570056019996, guid: 4361bae5b68aa4f09b3f98b50a8c1c28, type: 3}
+  MissileInterval: 1
   eyePrefab: {fileID: 495194931325493563, guid: f5af441309e78481798c32998c20e64b, type: 3}
   enemyPrefab: {fileID: 6975737298756526056, guid: 0b45d0e801e43440aad8743e595daf3c, type: 3}
   enemyInterval: 5
@@ -884,33 +884,6 @@ Transform:
 --- !u!1 &727909815 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3659920701935932902, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
-  m_PrefabInstance: {fileID: 1765927628}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &727909820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 727909815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baaa911108d7f47e2beee30f07e4f495, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  animator: {fileID: 727909821}
-  maxHealth: 100
-  currentHealth: 0
-  healthBar: {fileID: 6864647806203383012}
-  inventoryBar: {fileID: 6864647805794099945}
-  equipNothing: 282
-  equipKnife: 283
-  equipGun: 284
-  ControlsUI: {fileID: 6864647806855538562}
---- !u!95 &727909821 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4771440884510652248, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
   m_PrefabInstance: {fileID: 1765927628}
   m_PrefabAsset: {fileID: 0}
 --- !u!50 &727909825
@@ -7680,7 +7653,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 727909830}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1437522124
 SpriteRenderer:
@@ -31718,6 +31691,10 @@ PrefabInstance:
       propertyPath: m_DefaultActionMap
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7021187805298940465, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7635286158495045363, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -31778,6 +31755,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9004904703937946838, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 6864647806203383012}
+    - target: {fileID: 9004904703937946838, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
+      propertyPath: ControlsUI
+      value: 
+      objectReference: {fileID: 6864647806855538562}
+    - target: {fileID: 9004904703937946838, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
+      propertyPath: inventoryBar
+      value: 
+      objectReference: {fileID: 6864647805794099945}
     m_RemovedComponents:
     - {fileID: -111615737895249393, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
