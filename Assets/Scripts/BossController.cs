@@ -79,36 +79,21 @@ public class BossController : MonoBehaviour
 
         if (phase == 0 && health <= 100f)
         {
-            CheckHealth();
+            StartCoroutine(spawnEnemy(enemyInterval, enemyPrefab));
+
             phase = 1;
         }
         else if (phase == 1 && health <= 70f)
         {
-            CheckHealth();
+            StartCoroutine(spawnMissile(MissileInterval, MissilePrefab));
             phase = 2;
         }
         else if (phase == 2 && health <= 30f)
         {
-            CheckHealth();
+            StartCoroutine(spawnEyes(eyePrefab));
             phase = 3;
         }
 
-    }
-
-    private void CheckHealth()
-    {
-
-        StartCoroutine(spawnEnemy(enemyInterval, enemyPrefab));
-
-        if (health <= 70f) // check if the current health is below 75
-        {
-            StartCoroutine(spawnMissile(MissileInterval, MissilePrefab)); // start the coroutine
-        }
-
-        if (health < 40f)
-        {
-            StartCoroutine(spawnEyes(eyePrefab));
-        }
     }
 
 
