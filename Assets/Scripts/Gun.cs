@@ -32,6 +32,7 @@ public class Gun : MonoBehaviour
                 nextFireTime = Time.time + fireRate;
                 var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.right * bulletSpeed;
+                audioOutputSource.volume  = 0.1f;
                 audioOutputSource.PlayOneShot(shootClip);
             }
             else

@@ -15,7 +15,12 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(5);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(1);
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "barrier")
+        {
             Destroy(gameObject);
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    public float life = 3;
+    private float life = 1;
 
     void Awake()
     {
@@ -24,6 +24,11 @@ public class PlayerBullet : MonoBehaviour
         if (collision.gameObject.tag == "Guiliani")
         {
             collision.gameObject.GetComponent<BossController>().health -= 5;
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "barrier")
+        {
             Destroy(gameObject);
         }
     }

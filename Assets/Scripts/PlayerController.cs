@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public float maxHealth = 100;
     public float currentHealth;
+    public float enemyKills = 0;
 
     // Inventory UI
     public HealthBar healthBar;

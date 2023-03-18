@@ -46,6 +46,7 @@ public class EnemyFollowPlayer : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            player.gameObject.GetComponent<PlayerController>().enemyKills += 1;
         }
 
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
