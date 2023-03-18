@@ -9,6 +9,7 @@ TagManager:
   - ratEnemy
   - Guiliani
   - bullet
+  - barrier
   layers:
   - Default
   - TransparentFX
