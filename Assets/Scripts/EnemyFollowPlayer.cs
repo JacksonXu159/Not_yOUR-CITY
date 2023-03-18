@@ -16,6 +16,12 @@ public class EnemyFollowPlayer : MonoBehaviour
     public float bulletSpeed = 10;
     Animator m_Animator;
     public float health = 20;
+    public SpriteRenderer gunSprite;
+    private GameObject lgun;
+    private GameObject rgun;
+    private GameObject gun;
+    Vector3 lgunPos;
+    Vector3 rgunPos;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +30,19 @@ public class EnemyFollowPlayer : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         m_Animator = gameObject.GetComponent<Animator>();
         m_Animator.SetBool("walking", false);
+        lgun = gameObject.transform.Find("rgun").gameObject;
+        rgun = gameObject.transform.Find("lgun").gameObject;
+        gun = gameObject.transform.Find("gun").gameObject;
+        lgunPos = lgun.transform.position;
+        rgunPos = rgun.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        lgunPos = lgun.transform.position;
+        rgunPos = rgun.transform.position;
+
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -72,10 +86,16 @@ public class EnemyFollowPlayer : MonoBehaviour
         if (player.position.x - transform.position.x < 0)
         {
             spriteRenderer.flipX = true;
+            gunSprite.flipX = true;
+            gun.transform.position = rgunPos;
+
         }
         else if (player.position.x - transform.position.x > 0)
         {
             spriteRenderer.flipX = false;
+            gunSprite.flipX = false;
+            gun.transform.position = lgunPos;
+
         }
     }
 }
