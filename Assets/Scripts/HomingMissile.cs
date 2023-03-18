@@ -57,27 +57,34 @@ public class HomingMissile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag=="barrier"){
+            Instantiate(explosionEffect, transform.position, transform.rotation);
+            audioOutputSource.PlayOneShot(missileExplodeClip);
+            Destroy(gameObject);
+
+        }
+
         if (collision.gameObject.tag == "Player")
         {
             Instantiate(explosionEffect, transform.position, transform.rotation);
             collision.gameObject.GetComponent<PlayerController>().TakeDamage(15);
-            Destroy(gameObject);
             audioOutputSource.PlayOneShot(missileExplodeClip);
+            Destroy(gameObject);
         }
 
         if (collision.gameObject.tag == "bullet")
         {
             Instantiate(explosionEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
             audioOutputSource.PlayOneShot(missileExplodeClip);
+            Destroy(gameObject);
         }
 
         if (collision.gameObject.tag == "baldEnemy")
         {
             Instantiate(explosionEffect, transform.position, transform.rotation);
             collision.gameObject.GetComponent<EnemyFollowPlayer>().health -= 15;
-            Destroy(gameObject);
             audioOutputSource.PlayOneShot(missileExplodeClip);
+            Destroy(gameObject);
         }
     }
 }

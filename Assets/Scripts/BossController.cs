@@ -22,6 +22,10 @@ public class BossController : MonoBehaviour
     [SerializeField]
     private float enemyInterval = 1f;
 
+    private GameObject[] eyes;
+
+
+
     //[SerializeField] private ColliderTrigger colliderTrigger;
 
     private List<Vector3> spawnPositionList;
@@ -73,6 +77,13 @@ public class BossController : MonoBehaviour
     {
         if (health <= 0)
         {
+            eyes = GameObject.FindGameObjectsWithTag("laserEyes");
+
+            foreach (GameObject eye in eyes)
+            {
+                Destroy(eye);
+            }
+
             Debug.Log("dead");
             Destroy(gameObject);
         }

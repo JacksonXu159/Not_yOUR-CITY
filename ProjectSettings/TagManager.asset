@@ -10,6 +10,7 @@ TagManager:
   - Guiliani
   - bullet
   - barrier
+  - laserEyes
   layers:
   - Default
   - TransparentFX
