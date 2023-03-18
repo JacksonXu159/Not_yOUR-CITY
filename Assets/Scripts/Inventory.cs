@@ -37,14 +37,19 @@ public class Inventory
             case Equippable.NONE:
                 currentlyEquipped = e;
                 player.transform.Find("Gun").gameObject.SetActive(false);
+                player.transform.Find("Sword").gameObject.SetActive(false);
+
                 break;
             case Equippable.GUN:
                 if (hasGun()) currentlyEquipped = e;
                     player.transform.Find("Gun").gameObject.SetActive(true);
+                    player.transform.Find("Sword").gameObject.SetActive(false);
                 break;
             case Equippable.KNIFE:
                 if (hasKnife()) currentlyEquipped = e;
                     player.transform.Find("Gun").gameObject.SetActive(false);
+                    player.transform.Find("Sword").gameObject.SetActive(true);
+
                 break;
             default:
                 Debug.LogError("Unexpected equippable. What are you trying to equip?");
@@ -82,7 +87,7 @@ public class Inventory
 
     public bool hasKnife()
     {
-        return this.knife;
+        return knife;
     }
 
     public bool hasGun()

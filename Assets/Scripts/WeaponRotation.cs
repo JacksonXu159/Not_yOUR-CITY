@@ -9,6 +9,7 @@ public class WeaponRotation : MonoBehaviour
     public SpriteRenderer weaponRenderer;
     private float yScale;
     public float yOffset;
+    public float xOffset;
     public Transform plr;
 
     private int armLength = 1;
@@ -40,13 +41,13 @@ public class WeaponRotation : MonoBehaviour
         {
             scale.y = -yScale;
             characterRenderer.flipX = true;
-            transform.position = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
+            transform.position = new Vector3(transform.position.x + xOffset, transform.position.y + yOffset, transform.position.z);
         }
         else if (Mathf.Abs(rotation_z) < 90)
         {
             scale.y = yScale;
             characterRenderer.flipX = false;
-            transform.position = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
+            transform.position = new Vector3(transform.position.x + xOffset, transform.position.y + yOffset, transform.position.z);
         }
         transform.localScale = scale;
     }

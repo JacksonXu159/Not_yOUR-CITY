@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
         {
             inventory.Equip(Inventory.Equippable.NONE);
         }
-        if (Input.GetKeyDown(equipKnife))
+        if (Input.GetKeyDown(equipKnife) && inventory.hasKnife())
         {
             inventory.Equip(Inventory.Equippable.KNIFE);
         }
