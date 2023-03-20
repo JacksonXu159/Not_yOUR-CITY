@@ -32,7 +32,7 @@ public class BossController : MonoBehaviour
 
     int phase = 0;
 
-
+    public HealthBar healthBar;
 
     void Awake()
     {
@@ -47,6 +47,7 @@ public class BossController : MonoBehaviour
     void Start()
     {
         //CheckHealth(); // check the health and start the coroutine if necessary
+        healthBar.SetMaxHealth(health);
     }
 
 
@@ -107,5 +108,9 @@ public class BossController : MonoBehaviour
 
     }
 
-
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        healthBar.SetHealth(health);
+    }
 }
