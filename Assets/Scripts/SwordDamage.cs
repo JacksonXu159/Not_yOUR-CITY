@@ -20,7 +20,7 @@ public class SwordDamage : MonoBehaviour
     {
         if (collision.gameObject.tag == "Guiliani")
         {
-            collision.gameObject.GetComponent<BossController>().health -= 3;
+            collision.gameObject.GetComponent<BossController>().TakeDamage(3);
         }
 
         if (collision.gameObject.tag == "bullet")
