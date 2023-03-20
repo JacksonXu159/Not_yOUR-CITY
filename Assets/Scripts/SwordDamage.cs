@@ -4,33 +4,35 @@ using UnityEngine;
 
 public class SwordDamage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private GameObject gameObjectReceivingDamage;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!Input.GetMouseButtonDown(0)) return;
+        if (gameObjectReceivingDamage == null) return;
+        if (gameObjectReceivingDamage.tag == "Guiliani")
+        {
+            gameObjectReceivingDamage.GetComponent<BossController>().TakeDamage(3);
+        }
+
+        if (gameObjectReceivingDamage.tag == "bullet")
+        {
+            Destroy(gameObjectReceivingDamage);
+        }
+
+        if (gameObjectReceivingDamage.tag == "baldEnemy")
+        {
+            gameObjectReceivingDamage.GetComponent<EnemyFollowPlayer>().health -= 10;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Guiliani")
-        {
-            collision.gameObject.GetComponent<BossController>().TakeDamage(3);
-        }
-
-        if (collision.gameObject.tag == "bullet")
-        {
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.tag == "baldEnemy")
-        {
-            collision.gameObject.GetComponent<EnemyFollowPlayer>().health -= 10;
-        }
+        gameObjectReceivingDamage = collision.gameObject;
+    }   
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        gameObjectReceivingDamage = null;
     }
 }
