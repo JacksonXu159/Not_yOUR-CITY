@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawn : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class EnemySpawn : MonoBehaviour
     private string currWave = "1";
     private string waveAmount = "10";
     private string currentKills = "0";
+    public string bossStage;
     
     public TMPro.TextMeshProUGUI waveUI;
 
@@ -63,16 +65,24 @@ public class EnemySpawn : MonoBehaviour
         }
 
         if (wave == -2){
-            kills -= 10;
-            if (player.GetComponent<PlayerController>().enemyKills == waveTwoAmount + 10){
+            kills -= waveOneAmount;
+            if (player.GetComponent<PlayerController>().enemyKills == waveTwoAmount + waveOneAmount){
                 Debug.Log("wave3");
                 wave = 3;
             }
         }
 
         if (wave == -3){
-            kills -= 25;
+            kills -= (waveOneAmount+waveTwoAmount);
+            if (player.GetComponent<PlayerController>().enemyKills == waveThreeAmount + waveTwoAmount + waveOneAmount){
+                SceneManager.LoadScene(sceneName:bossStage);
+
+            }
+
+
         }
+
+        
 
         currentKills = kills.ToString();
         waveUI.text = "Wave: " + currWave  + ": " + currentKills + "/" + waveAmount;

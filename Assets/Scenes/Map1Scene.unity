@@ -1361,6 +1361,7 @@ MonoBehaviour:
   waveTwoAmount: 15
   waveThreeAmount: 20
   interval: 0
+  bossStage: FinalBossState
   waveUI: {fileID: 1859339000}
 --- !u!4 &644288534
 Transform:
