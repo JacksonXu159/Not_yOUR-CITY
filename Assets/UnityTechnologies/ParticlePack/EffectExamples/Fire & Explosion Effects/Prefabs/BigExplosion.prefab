@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4388947112716342}
   - component: {fileID: 198917022394846920}
   - component: {fileID: 199630755385234010}
-  - component: {fileID: -6147360709290413381}
+  - component: {fileID: 2941428946345375993}
   m_Layer: 0
   m_Name: BigExplosion
   m_TagString: Untagged
@@ -4924,7 +4924,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &-6147360709290413381
+--- !u!114 &2941428946345375993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4936,7 +4936,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8926cd8c68c61480c96cbea39ac479e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 1
+  life: 2
+  missileExplodeClip: {fileID: 8300000, guid: f54a17a20b897484d83f941227bff460, type: 3}
 --- !u!1 &1123476242953952
 GameObject:
   m_ObjectHideFlags: 0
