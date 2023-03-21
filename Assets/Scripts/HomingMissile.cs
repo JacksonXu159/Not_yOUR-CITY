@@ -28,6 +28,7 @@ public class HomingMissile : MonoBehaviour
         spawnTime = Time.time; // save the spawn time of the missile
         
         audioOutputSource = gameObject.AddComponent<AudioSource>();
+        audioOutputSource.volume  = 0.6f;
         audioOutputSource.PlayOneShot(missileSpawnClip);
     }
 

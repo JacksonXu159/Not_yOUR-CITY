@@ -18,6 +18,7 @@ public class ExplosionCloneDelete : MonoBehaviour
 
     void Start()
     {
+        audioOutputSource.volume  = 0.4f;
         audioOutputSource = gameObject.AddComponent<AudioSource>();
         audioOutputSource.PlayOneShot(missileExplodeClip);
     }

@@ -23,7 +23,7 @@ public class PlayerBullet : MonoBehaviour
 
         if (collision.gameObject.tag == "Guiliani")
         {
-            collision.gameObject.GetComponent<BossController>().TakeDamage(5);
+            collision.gameObject.GetComponent<BossController>().TakeDamage(2);
             Destroy(gameObject);
         }
 

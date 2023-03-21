@@ -52,8 +52,8 @@ public class EnemyFollowPlayer : MonoBehaviour
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
         if (distanceFromPlayer < lineOfSight && distanceFromPlayer > shootingRange)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
             m_Animator.SetBool("walking", true);
+            transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
         }
         else if (distanceFromPlayer <= shootingRange && nextFireTime < Time.time)
         {
