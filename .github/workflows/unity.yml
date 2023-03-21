@@ -43,6 +43,7 @@ jobs:
           path: build
   upload:
     name: Upload to website
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - run: |
