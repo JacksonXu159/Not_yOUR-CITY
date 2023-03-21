@@ -142,4 +142,10 @@ public class PlayerController : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
+
+    public void healPlr(float amount)
+    {
+        currentHealth += amount;
+        healthBar.SetHealth(currentHealth);
+    }
 }
