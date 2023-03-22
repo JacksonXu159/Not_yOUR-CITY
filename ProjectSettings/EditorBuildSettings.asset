@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalBossState.unity
     guid: 0290b14cf84fc4b7194617194637a27f
+  - enabled: 1
+    path: Assets/Scenes/End-Menu-Example.unity
+    guid: 06fd3314e674549b692f50cae0b58f4d
   m_configObjects: {}

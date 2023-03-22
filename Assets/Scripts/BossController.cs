@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class BossController : MonoBehaviour
 {
@@ -87,6 +89,8 @@ public class BossController : MonoBehaviour
 
             Debug.Log("dead");
             Destroy(gameObject);
+            SceneManager.LoadScene("End-Menu-Example");
+
         }
 
         if (phase == 0 && health <= 100f)
