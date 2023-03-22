@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExplosionCloneDelete : MonoBehaviour
 {
-    public int life = 1;
+    public int life = 2;
     private AudioSource audioOutputSource;
     public AudioClip missileExplodeClip;
     // Start is called before the first frame update
