@@ -31129,6 +31129,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9004904703937946838, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
+      propertyPath: equipGun
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004904703937946838, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1609609937}
@@ -31136,6 +31140,10 @@ PrefabInstance:
       propertyPath: ControlsUI
       value: 
       objectReference: {fileID: 1518477265}
+    - target: {fileID: 9004904703937946838, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
+      propertyPath: equipKnife
+      value: 49
+      objectReference: {fileID: 0}
     - target: {fileID: 9004904703937946838, guid: bdb1fdd4c457445e6a52fab188434cdb, type: 3}
       propertyPath: inventoryBar
       value: 
@@ -32650,6 +32658,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6713216577157010774, guid: 839a56ef178af874fb82f4abe340028f, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6713216577591242929, guid: 839a56ef178af874fb82f4abe340028f, type: 3}
       propertyPath: m_Name
       value: UI

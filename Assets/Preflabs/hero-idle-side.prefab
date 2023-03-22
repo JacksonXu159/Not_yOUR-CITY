@@ -262,11 +262,12 @@ MonoBehaviour:
   animator: {fileID: 4771440884510652248}
   maxHealth: 100
   currentHealth: 0
+  enemyKills: 0
   healthBar: {fileID: 0}
   inventoryBar: {fileID: 0}
   equipNothing: 51
-  equipKnife: 50
-  equipGun: 49
+  equipKnife: 49
+  equipGun: 50
   ControlsUI: {fileID: 0}
   pickupKnifeClip: {fileID: 8300000, guid: 48ec4d763b7608e4c83babe06f8984f9, type: 3}
   pickupGunClip: {fileID: 8300000, guid: c6e18e76e666f184b8ab4335d769e8c5, type: 3}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    private float life = 1;
+    public float life = 0.5f;
 
     void Awake()
     {

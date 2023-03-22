@@ -44,6 +44,12 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        // Display keybinds/controls
+        ControlsUI.text = "Controls: \n";
+        ControlsUI.text += "Knife: " + "1" + "\n";
+        ControlsUI.text += "Gun: " + "2" + "\n";
+        ControlsUI.text += "None: " + "3" + "\n";
+
         healthBar.SetMaxHealth(maxHealth);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -88,6 +94,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        audioOutputSource.volume  = 0.5f;
         if (other.gameObject.tag == "Item")
         {
             if (other.gameObject.name == "knife")
@@ -111,11 +118,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Display keybinds/controls
-        ControlsUI.text = "Controls: \n";
-        ControlsUI.text += "None: " + equipNothing + "\n";
-        ControlsUI.text += "Knife: " + equipKnife + "\n";
-        ControlsUI.text += "Gun: " + equipGun + "\n";
+        // // Display keybinds/controls
+        // ControlsUI.text = "Controls: \n";
+        // ControlsUI.text += "None: " + equipNothing + "\n";
+        // ControlsUI.text += "Knife: " + equipKnife + "\n";
+        // ControlsUI.text += "Gun: " + equipGun + "\n";
 
 
         // Keyevent handlers
